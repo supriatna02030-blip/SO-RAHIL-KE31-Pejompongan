@@ -85,7 +85,7 @@ td input{width:60px!important; padding:6px!important; margin:0!important; font-s
 </div>
 <button class="btn-ungu" onclick="ubahNamaToko()">🏪 Ubah Nama Toko</button>
 <button class="btn-merah" onclick="resetData()">🔄 Reset Semua Data</button>
-<p style="font-size:12px; opacity:0.6; margin-top:20px">Versi: v5.4.4 FINAL<br>Dibuat oleh Feilina 💖</p>
+<p style="font-size:12px; opacity:0.6; margin-top:20px">Versi: v5.4.5 FINAL<br>Dibuat oleh Feilina 💖</p>
 </div>
 </div>
 
@@ -196,7 +196,7 @@ function simpanPS(){
 let pic = document.getElementById('inPIC').value;
 if(!pic){alert('Isi Nama PIC dulu!'); return;}
 if(dataBarang.length==0){alert('Load 17 Item dulu!'); return;}
-let tgl = new Date().toLocaleDateString('id-ID') + ' + new Date().toLocaleTimeString('id-ID'); // UDAH FIX
+let tgl = new Date().toLocaleDateString('id-ID') + ' + new Date().toLocaleTimeString('id-ID'); // INI UDAH BENER
 riwayatSO.unshift({tanggal:tgl, pic:pic, data:JSON.parse(JSON.stringify(dataBarang))});
 localStorage.setItem('soRiwayat', JSON.stringify(riwayatSO));
 showToast(`✅ Data Tersimpan ${tgl}`);
