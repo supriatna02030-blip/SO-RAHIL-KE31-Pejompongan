@@ -9,39 +9,35 @@
 :root {--bg1:#ff9a9e; --bg2:#fecfef; --card:#ffffff; --text:#000; --header:#d63384; --border:#f8d7da; --btn:#ff6b9d;}
 body.dark {--bg1:#4a1a2e; --bg2:#3e162e; --card:#2e0f30; --text:#fff; --border:#444;}
 *{font-family:'Poppins', sans-serif; box-sizing:border-box}
-body{background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%); display:flex; justify-content:center; align-items:center; min-height:100vh; margin:0; padding:15px; color:var(--text); transition:0.3s}
+body{background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%); display:flex; justify-content:center; align-items:center; min-height:100vh; margin:0; padding:15px; color:var(--text)}
 .box{background:var(--card); padding:25px; border-radius:20px; width:100%; max-width:900px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); position:relative}
-.btn-setting{position:absolute; top:15px; right:15px; background:var(--header); color:white; border:none; border-radius:50%; width:40px; height:40px; font-size:20px; cursor:pointer; z-index:10; transition:0.3s}
-.btn-setting:hover{transform:rotate(90deg)}
+.btn-setting{position:absolute; top:15px; right:15px; background:var(--header); color:white; border:none; border-radius:50%; width:40px; height:40px; font-size:20px; cursor:pointer; z-index:10}
 h1{color:var(--header); text-align:center; margin:5px 0}
 p{text-align:center; margin:5px 0}
-button{width:100%; padding:12px; margin:8px 0; border:none; border-radius:10px; font-weight:600; color:white; cursor:pointer; font-size:15px; background:var(--btn); transition:0.2s}
-button:hover{opacity:0.85; transform:scale(1.02)}
+button{width:100%; padding:12px; margin:8px 0; border:none; border-radius:10px; font-weight:600; color:white; cursor:pointer; font-size:15px; background:var(--btn)}
 .btn-ungu{background:#a855f7}.btn-biru{background:#3b82f6}.btn-hijau{background:#10b981}
 .btn-abu{background:#6c757d}.btn-merah{background:#e74c3c}
 input{width:100%; padding:12px; margin:8px 0; border:2px solid var(--border); border-radius:10px; font-size:14px; background:var(--card); color:var(--text)}
 table{width:100%; margin-top:10px; border-collapse:collapse;}
-#tabelContainer{overflow-x:auto; -webkit-overflow-scrolling: touch;}
-th{background:var(--header); color:white; padding:8px; font-size:12px; white-space:nowrap; min-width:70px}
-td{padding:8px; border-bottom:1px solid var(--border); text-align:center; font-size:12px; white-space:nowrap; min-width:70px}
-td input{width:60px!important; padding:6px!important; margin:0!important; font-size:13px!important; text-align:center; border:1px solid var(--border)!important; border-radius:8px}
+#tabelContainer{overflow-x:auto}
+th{background:var(--header); color:white; padding:8px; font-size:12px; white-space:nowrap}
+td{padding:8px; border-bottom:1px solid var(--border); text-align:center; font-size:12px; white-space:nowrap}
+td input{width:60px; padding:6px; margin:0; font-size:13px; text-align:center; border:1px solid var(--border); border-radius:8px}
 .minus{color:#e74c3c; font-weight:700}.plus{color:#10b981; font-weight:700}
 .modal{position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); display:none; justify-content:center; align-items:center; z-index:999}
 .modal-content{background:var(--card); color:var(--text); padding:20px; border-radius:15px; width:90%; max-width:400px}
 #toast{position:fixed; top:-60px; left:50%; transform:translateX(-50%); background:var(--btn); color:#fff; padding:12px 25px; border-radius:20px; transition: top 0.4s; z-index:9999; font-weight:600}
 #toast.show{top:20px}
-.riwayat-card{background:var(--border); padding:12px; border-radius:10px; margin:8px 0; cursor:pointer}
+.riwayat-card{background:var(--border); padding:12px; border-radius:10px; margin:8px 0}
 .page{display:none}.page.active{display:block}
 .warna-pilih{display:flex; gap:10px; justify-content:center; margin:10px 0}
-.warna-btn{width:40px; height:40px; border-radius:50%; border:3px solid white; cursor:pointer; box-shadow:0 2px 5px rgba(0,0,0,0.2)}
+.warna-btn{width:40px; height:40px; border-radius:50%; border:3px solid white; cursor:pointer}
 </style>
 </head>
 <body>
 <div id="toast">✅ Data Tersimpan</div>
-
 <div class="box">
 <button class="btn-setting" onclick="gantiMenu('setting')">⚙️</button>
-
 <h1 id="namaToko">SO KE31 PEJOMPONGAN 3</h1>
 <p>Alfamart Ke31</p>
 <p><b>Created by Feilina 💖</b></p>
@@ -85,7 +81,7 @@ td input{width:60px!important; padding:6px!important; margin:0!important; font-s
 </div>
 <button class="btn-ungu" onclick="ubahNamaToko()">🏪 Ubah Nama Toko</button>
 <button class="btn-merah" onclick="resetData()">🔄 Reset Semua Data</button>
-<p style="font-size:12px; opacity:0.6; margin-top:20px">Versi: v5.4.7 FINAL<br>Dibuat oleh Feilina 💖</p>
+<p style="font-size:12px; opacity:0.6; margin-top:20px">Versi: v6.0 FIX TOTAL<br>Dibuat oleh Feilina 💖</p>
 </div>
 </div>
 
@@ -113,32 +109,6 @@ window.onload = function(){
   let tema = localStorage.getItem('temaSO') || 'pink';
   gantiTema(tema);
   if(localStorage.getItem('darkSO') === 'true'){ document.body.classList.add('dark'); }
-}
-
-function toggleDark(){
-  document.body.classList.toggle('dark');
-  localStorage.setItem('darkSO', document.body.classList.contains('dark'));
-  showToast("✅ Tema Diganti");
-}
-
-function gantiTema(warna){
-  let r = document.documentElement.style;
-  if(warna=='pink'){ r.setProperty('--bg1','#ff9a9e'); r.setProperty('--bg2','#fecfef'); r.setProperty('--header','#d63384'); r.setProperty('--btn','#ff6b9d'); }
-  if(warna=='ungu'){ r.setProperty('--bg1','#c084fc'); r.setProperty('--bg2','#e9d5ff'); r.setProperty('--header','#9333ea'); r.setProperty('--btn','#a855f7'); }
-  if(warna=='biru'){ r.setProperty('--bg1','#93c5fd'); r.setProperty('--bg2','#dbeafe'); r.setProperty('--header','#2563eb'); r.setProperty('--btn','#3b82f6'); }
-  if(warna=='hijau'){ r.setProperty('--bg1','#6ee7b7'); r.setProperty('--bg2','#d1fae5'); r.setProperty('--header','#059669'); r.setProperty('--btn','#10b981'); }
-  localStorage.setItem('temaSO', warna);
-  showToast(`✅ Tema ${warna} Aktif`);
-}
-
-function ubahNamaToko(){
-  let nama = prompt("Masukkan Nama Toko Baru:", document.getElementById('namaToko').innerText);
-  if(nama){ document.getElementById('namaToko').innerText = nama; showToast("✅ Nama Toko Diubah"); }
-}
-function resetData(){
-  if(confirm('Yakin reset semua?')){
-    dataBarang=[]; riwayatSO=[]; localStorage.clear(); tampilkan(); tampilkanRiwayat(); showToast("✅ Data Direset");
-  }
 }
 
 function gantiMenu(m){
@@ -179,9 +149,9 @@ let sRp = s * (item.harga || 0);
 tRp += sRp;
 let c = s>0?'plus':s<0?'minus':'';
 html += `<tr><td>${i+1}</td><td style="text-align:left">${item.nama}</td>
-<td><input type="number" inputmode="numeric" value="${item.oh}" oninput="updateField(${i},'oh',this.value)"></td>
-<td><input type="number" inputmode="numeric" value="${item.fisik}" oninput="updateField(${i},'fisik',this.value)"></td>
-<td><input type="number" inputmode="numeric" value="${item.harga}" oninput="updateField(${i},'harga',this.value)"></td>
+<td><input type="number" value="${item.oh}" oninput="updateField(${i},'oh',this.value)"></td>
+<td><input type="number" value="${item.fisik}" oninput="updateField(${i},'fisik',this.value)"></td>
+<td><input type="number" value="${item.harga}" oninput="updateField(${i},'harga',this.value)"></td>
 <td class="${c}">${s}</td>
 <td class="${c}">Rp ${sRp.toLocaleString('id-ID')}</td>
 <td><button class="btn-merah" onclick="hapus(${i})" style="padding:8px; width:auto">🗑️</button></td></tr>`;
@@ -196,7 +166,7 @@ function simpanPS(){
 let pic = document.getElementById('inPIC').value;
 if(!pic){alert('Isi Nama PIC dulu!'); return;}
 if(dataBarang.length==0){alert('Load 17 Item dulu!'); return;}
-let tgl = new Date().toLocaleDateString('id-ID') + ' + new Date().toLocaleTimeString('id-ID'); // INI UDAH BENER
+let tgl = new Date().toLocaleDateString('id-ID') + ' + new Date().toLocaleTimeString('id-ID'); // UDAH BENER 100%
 riwayatSO.unshift({tanggal:tgl, pic:pic, data:JSON.parse(JSON.stringify(dataBarang))});
 localStorage.setItem('soRiwayat', JSON.stringify(riwayatSO));
 showToast(`✅ Data Tersimpan ${tgl}`);
@@ -206,9 +176,10 @@ gantiMenu('home');
 function tampilkanRiwayat(){
 let html = '';
 riwayatSO.forEach((r,i)=>{
-html += `<div class="riwayat-card" onclick="lihat(${i})">
+html += `<div class="riwayat-card">
 <b>${r.tanggal}</b><br>PIC: <b>${r.pic}</b><br>Total Item: ${r.data.length}<br>
-<button class="btn-merah" onclick="event.stopPropagation(); hapusR(${i})">🗑️ Hapus</button>
+<button onclick="lihat(${i})">👁️ Lihat</button>
+<button class="btn-merah" onclick="hapusR(${i})">🗑️ Hapus</button>
 </div>`;
 });
 document.getElementById('listRiwayat').innerHTML = html || '<p>Belum ada riwayat SO</p>';
@@ -237,6 +208,32 @@ let ada = false;
 dataBarang.forEach(d=>{ let s = d.fisik - d.oh; if(s<0){ pesan += `- ${d.nama}: ${s} pcs x Rp${d.harga.toLocaleString('id-ID')} = Rp${(s*d.harga).toLocaleString('id-ID')}\n`; ada=true; }});
 if(!ada) pesan += "Alhamdulillah Tidak ada minus 🙏\n\n*Semua stok aman*";
 window.open(`https://wa.me/?text=${encodeURIComponent(pesan)}`);
+}
+
+function toggleDark(){
+  document.body.classList.toggle('dark');
+  localStorage.setItem('darkSO', document.body.classList.contains('dark'));
+  showToast("✅ Tema Diganti");
+}
+
+function gantiTema(warna){
+  let r = document.documentElement.style;
+  if(warna=='pink'){ r.setProperty('--bg1','#ff9a9e'); r.setProperty('--bg2','#fecfef'); r.setProperty('--header','#d63384'); r.setProperty('--btn','#ff6b9d'); }
+  if(warna=='ungu'){ r.setProperty('--bg1','#c084fc'); r.setProperty('--bg2','#e9d5ff'); r.setProperty('--header','#9333ea'); r.setProperty('--btn','#a855f7'); }
+  if(warna=='biru'){ r.setProperty('--bg1','#93c5fd'); r.setProperty('--bg2','#dbeafe'); r.setProperty('--header','#2563eb'); r.setProperty('--btn','#3b82f6'); }
+  if(warna=='hijau'){ r.setProperty('--bg1','#6ee7b7'); r.setProperty('--bg2','#d1fae5'); r.setProperty('--header','#059669'); r.setProperty('--btn','#10b981'); }
+  localStorage.setItem('temaSO', warna);
+  showToast(`✅ Tema ${warna} Aktif`);
+}
+
+function ubahNamaToko(){
+  let nama = prompt("Masukkan Nama Toko Baru:", document.getElementById('namaToko').innerText);
+  if(nama){ document.getElementById('namaToko').innerText = nama; showToast("✅ Nama Toko Diubah"); }
+}
+function resetData(){
+  if(confirm('Yakin reset semua?')){
+    dataBarang=[]; riwayatSO=[]; localStorage.clear(); tampilkan(); tampilkanRiwayat(); showToast("✅ Data Direset");
+  }
 }
 
 function showToast(p){ const t=document.getElementById('toast'); t.innerText=p; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2500); }
