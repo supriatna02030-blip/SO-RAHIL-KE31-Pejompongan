@@ -6,18 +6,21 @@
 <title>SO KE31 PEJOMPONGAN 3</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root {--bg1:#ff9a9e; --bg2:#fecfef; --card:#ffffff; --text:#000; --header:#d63384; --border:#f8d7da; --btn:#ff6b9d;}
+:root {
+--bg1:#ff9a9e; --bg2:#fecfef; --card:#ffffff; --text:#000; --header:#d63384; --border:#f8d7da; --btn:#ff6b9d;
+}
 body.dark {--bg1:#4a1a2e; --bg2:#3e162e; --card:#2e0f30; --text:#fff; --border:#444;}
 *{font-family:'Poppins', sans-serif; box-sizing:border-box}
-body{background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%); display:flex; justify-content:center; align-items:center; min-height:100vh; margin:0; padding:15px; color:var(--text)}
+body{background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%); display:flex; justify-content:center; align-items:center; min-height:100vh; margin:0; padding:15px; color:var(--text); transition:0.3s}
 .box{background:var(--card); padding:25px; border-radius:20px; width:100%; max-width:900px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); position:relative}
-.btn-setting{position:absolute; top:15px; right:15px; background:var(--header); color:white; border:none; border-radius:50%; width:40px; height:40px; font-size:20px; cursor:pointer; transition:0.3s}
+.btn-setting{position:absolute; top:15px; right:15px; background:var(--header); color:white; border:none; border-radius:50%; width:40px; height:40px; font-size:20px; cursor:pointer; z-index:10; transition:0.3s}
 .btn-setting:hover{transform:rotate(90deg)}
 h1{color:var(--header); text-align:center; margin:5px 0}
 p{text-align:center; margin:5px 0}
 button{width:100%; padding:12px; margin:8px 0; border:none; border-radius:10px; font-weight:600; color:white; cursor:pointer; font-size:15px; background:var(--btn); transition:0.2s}
 button:hover{opacity:0.85; transform:scale(1.02)}
-.btn-ungu{background:#a855f7}.btn-hijau{background:#10b981}.btn-abu{background:#6c757d}.btn-merah{background:#e74c3c}.btn-kuning{background:#f59e0b}
+.btn-ungu{background:#a855f7}.btn-biru{background:#3b82f6}.btn-hijau{background:#10b981}
+.btn-abu{background:#6c757d}.btn-merah{background:#e74c3c}.btn-kuning{background:#f59e0b}
 input{width:100%; padding:12px; margin:8px 0; border:2px solid var(--border); border-radius:10px; font-size:14px; background:var(--card); color:var(--text)}
 table{width:100%; margin-top:10px; border-collapse:collapse; overflow-x:auto; display:block}
 th{background:var(--header); color:white; padding:8px; font-size:12px; white-space:nowrap}
@@ -27,9 +30,7 @@ td{padding:8px; border-bottom:1px solid var(--border); text-align:center; font-s
 .modal-content{background:var(--card); color:var(--text); padding:20px; border-radius:15px; width:90%; max-width:400px}
 #toast{position:fixed; top:-60px; left:50%; transform:translateX(-50%); background:var(--btn); color:#fff; padding:12px 25px; border-radius:20px; transition: top 0.4s; z-index:9999; font-weight:600}
 #toast.show{top:20px}
-.riwayat-card{background:var(--border); padding:12px; border-radius:10px; margin:8px 0; cursor:pointer; transition:0.2s}
-.riwayat-card:hover{background:var(--btn); color:white}
-.riwayat-ringkas{display:flex; justify-content:space-between; font-size:12px; margin-top:5px}
+.riwayat-card{background:var(--border); padding:12px; border-radius:10px; margin:8px 0}
 .page{display:none}.page.active{display:block}
 .warna-pilih{display:flex; gap:10px; justify-content:center; margin:10px 0}
 .warna-btn{width:40px; height:40px; border-radius:50%; border:3px solid white; cursor:pointer; box-shadow:0 2px 5px rgba(0,0,0,0.2)}
@@ -39,6 +40,7 @@ td{padding:8px; border-bottom:1px solid var(--border); text-align:center; font-s
 <div id="toast">✅ Data Tersimpan</div>
 
 <div class="box">
+
 <h1 id="namaToko">SO KE31 PEJOMPONGAN 3</h1>
 <p>Alfamart Ke31</p>
 <p><b>Created by Feilina 💖</b></p>
@@ -89,8 +91,9 @@ td{padding:8px; border-bottom:1px solid var(--border); text-align:center; font-s
 <button class="btn-ungu" onclick="ubahNamaToko()">🏪 Ubah Nama Toko</button>
 <button class="btn-hijau" onclick="exportCSV()">📤 Export Data Sekarang</button>
 <button class="btn-merah" onclick="resetData()">🔄 Reset Semua Data</button>
-<p style="font-size:12px; opacity:0.6; margin-top:20px">Versi: v6.1 FINAL<br>Dibuat oleh Feilina 💖</p>
+<p style="font-size:12px; opacity:0.6; margin-top:20px">Versi: v5.5 FINAL<br>Dibuat oleh Feilina 💖</p>
 </div>
+
 </div>
 
 <!-- MODAL TAMBAH MANUAL -->
@@ -114,7 +117,7 @@ let template17 = [
 {n:"Telor Asin"},{n:"Telur Ayam omega"},{n:"Telur Arab"},{n:"Telur Ayam negri Alfamart"},{n:"Telur Ayam kampung"},{n:"Le min 5L"},{n:"Le min 15L"},{n:"Alfa eco 30x40"},{n:"Alfa eco 38x45"}
 ];
 
-// LOAD TEMA
+// LOAD TEMA DARI LOCALSTORAGE
 window.onload = function(){
   let tema = localStorage.getItem('temaSO') || 'pink';
   gantiTema(tema);
@@ -124,7 +127,7 @@ window.onload = function(){
 function toggleDark(){
   document.body.classList.toggle('dark');
   localStorage.setItem('darkSO', document.body.classList.contains('dark'));
-  showToast("✅ Tema Diganti");
+  showToast("✅ Tema Gelap/Terang Diganti");
 }
 
 function gantiTema(warna){
@@ -162,13 +165,11 @@ if(confirm('Load 17 Item Template?')){
 dataBarang = [];
 template17.forEach(t => dataBarang.push({nama:t.n, oh:0, fisik:0, harga:0}));
 tampilkan(); showToast("✅ 17 Item Dimuat");
-}}
-
+}
 function batalLoad(){
 if(confirm('Yakin batal load? Data di tabel akan dihapus!')){
 dataBarang = []; tampilkan(); showToast("❌ Data Dibatalkan");
-}}
-
+}
 function simpanManual(){
 let n = document.getElementById('inNama').value;
 let oh = document.getElementById('inOH').value;
@@ -212,43 +213,22 @@ let tgl = new Date().toLocaleDateString('id-ID') + ' + new Date().toLocaleTimeSt
 riwayatSO.unshift({tanggal:tgl, pic:pic, data:JSON.parse(JSON.stringify(dataBarang))});
 localStorage.setItem('soRiwayat', JSON.stringify(riwayatSO));
 showToast(`✅ Data Tersimpan ${tgl}`);
-gantiMenu('home');
-}
-
-function hitungRingkasan(data){
-  let plus=0, minus=0, totalRp=0;
-  data.forEach(d=>{
-    let s = d.fisik - d.oh;
-    let sRp = s * (d.harga || 0);
-    totalRp += sRp;
-    if(s>0) plus++;
-    if(s<0) minus++;
-  });
-  return {plus, minus, totalRp}
 }
 
 function tampilkanRiwayat(){
 let html = '';
 riwayatSO.forEach((r,i)=>{
-  let ringkas = hitungRingkasan(r.data);
-  let status = ringkas.totalRp == 0? '✅ KLOP' : '⚠️ TIDAK KLOP';
-html += `<div class="riwayat-card" onclick="lihat(${i})">
-<b>${r.tanggal}</b><br>
-PIC: <b>${r.pic}</b><br>
-Total Item: ${r.data.length}<br>
-<div class="riwayat-ringkas">
-<span class="plus">Plus: ${ringkas.plus}</span>
-<span class="minus">Minus: ${ringkas.minus}</span>
-<span>Rp ${ringkas.totalRp.toLocaleString('id-ID')}</span>
-</div>
-<b>${status}</b><br>
-<button class="btn-merah" onclick="event.stopPropagation(); hapusR(${i})">🗑️ Hapus</button>
+html += `<div class="riwayat-card">
+<b>${document.getElementById('namaToko').innerText}</b><br>
+Tgl: ${r.tanggal}<br>PIC: <b>${r.pic}</b><br>Total Item: ${r.data.length}<br>
+<button onclick="lihat(${i})">👁️ Lihat Detail</button>
+<button class="btn-merah" onclick="hapusR(${i})">🗑️ Hapus</button>
 </div>`;
 });
 document.getElementById('listRiwayat').innerHTML = html || '<p>Belum ada riwayat SO</p>';
 }
 function lihat(i){ dataBarang = JSON.parse(JSON.stringify(riwayatSO[i].data)); gantiMenu('input'); tampilkan(); showToast(`📄 Buka data ${riwayatSO[i].tanggal}`); }
-function hapusR(i){ if(confirm('Hapus riwayat ini?')){ riwayatSO.splice(i,1); localStorage.setItem('soRiwayat', JSON.stringify(riwayatSO)); tampilkanRiwayat(); } }
+function hapusR(i){ if(confirm('Hapus riwayat ini?')){ riwayatSO.splice(i,1); localStorage.setItem('soRiwayat', JSON.stringify(riwayatSO)); tampilkanRiwayat(); }
 function hapusSemuaRiwayat(){ if(confirm('Yakin hapus SEMUA riwayat?')){ riwayatSO=[]; localStorage.removeItem('soRiwayat'); tampilkanRiwayat(); showToast("✅ Riwayat Dihapus"); } }
 
 function exportCSV(){
