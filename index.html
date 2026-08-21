@@ -20,7 +20,7 @@ p{text-align:center; margin:5px 0}
 button{width:100%; padding:12px; margin:8px 0; border:none; border-radius:10px; font-weight:600; color:white; cursor:pointer; font-size:15px; background:var(--btn); transition:0.2s}
 button:hover{opacity:0.85; transform:scale(1.02)}
 .btn-ungu{background:#a855f7}.btn-biru{background:#3b82f6}.btn-hijau{background:#10b981}
-.btn-abu{background:#6c757d}.btn-merah{background:#e74c3c}.btn-kuning{background:#f59e0b}
+.btn-abu{background:#6c757d}.btn-merah{background:#e74c3c}
 input{width:100%; padding:12px; margin:8px 0; border:2px solid var(--border); border-radius:10px; font-size:14px; background:var(--card); color:var(--text)}
 table{width:100%; margin-top:10px; border-collapse:collapse; overflow-x:auto; display:block}
 th{background:var(--header); color:white; padding:8px; font-size:12px; white-space:nowrap}
@@ -40,6 +40,7 @@ td{padding:8px; border-bottom:1px solid var(--border); text-align:center; font-s
 <div id="toast">✅ Data Tersimpan</div>
 
 <div class="box">
+<button class="btn-setting" onclick="gantiMenu('setting')">⚙️</button>
 
 <h1 id="namaToko">SO KE31 PEJOMPONGAN 3</h1>
 <p>Alfamart Ke31</p>
@@ -47,7 +48,6 @@ td{padding:8px; border-bottom:1px solid var(--border); text-align:center; font-s
 
 <!-- MENU UTAMA / HOME -->
 <div id="menuUtama" class="page active">
-<button class="btn-setting" onclick="gantiMenu('setting')">⚙️</button>
 <button onclick="gantiMenu('input')">📝 Input SO</button>
 <button onclick="gantiMenu('riwayat')">📚 Riwayat SO</button>
 </div>
@@ -58,7 +58,6 @@ td{padding:8px; border-bottom:1px solid var(--border); text-align:center; font-s
 <input type="text" id="inPIC" placeholder="Nama PIC SO: contoh Feilina">
 <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center">
 <button onclick="loadItems()">📥 Load 17 Item</button>
-<button class="btn-kuning" onclick="batalLoad()">❌ Batal Load</button>
 <button class="btn-ungu" onclick="bukaModal()">➕ Tambah Manual</button>
 <button class="btn-hijau" onclick="exportCSV()">📤 Export Excel</button>
 <button class="btn-hijau" onclick="kirimWA()">📲 Kirim WA Minus</button>
@@ -91,7 +90,7 @@ td{padding:8px; border-bottom:1px solid var(--border); text-align:center; font-s
 <button class="btn-ungu" onclick="ubahNamaToko()">🏪 Ubah Nama Toko</button>
 <button class="btn-hijau" onclick="exportCSV()">📤 Export Data Sekarang</button>
 <button class="btn-merah" onclick="resetData()">🔄 Reset Semua Data</button>
-<p style="font-size:12px; opacity:0.6; margin-top:20px">Versi: v5.5 FINAL<br>Dibuat oleh Feilina 💖</p>
+<p style="font-size:12px; opacity:0.6; margin-top:20px">Versi: v5.4 FINAL<br>Dibuat oleh Feilina 💖</p>
 </div>
 
 </div>
@@ -166,9 +165,6 @@ dataBarang = [];
 template17.forEach(t => dataBarang.push({nama:t.n, oh:0, fisik:0, harga:0}));
 tampilkan(); showToast("✅ 17 Item Dimuat");
 }
-function batalLoad(){
-if(confirm('Yakin batal load? Data di tabel akan dihapus!')){
-dataBarang = []; tampilkan(); showToast("❌ Data Dibatalkan");
 }
 function simpanManual(){
 let n = document.getElementById('inNama').value;
@@ -183,7 +179,7 @@ tutupModal(); tampilkan(); showToast("✅ Produk Ditambah");
 function updateField(i, f, v){ dataBarang[i][f] = Number(v)||0; tampilkan(); }
 
 function tampilkan(){
-let html = '<table><tr><th>No</th><th>Nama</th><th>OH</th><th>Fisik</th><th>Harga</th><th>Selisih</th><th>Selisih Rp</th><th>Aksi</th></tr>';
+let html = '<table><tr><th>No</th><th>Nama Barang</th><th>OH</th><th>Fisik</th><th>Harga</th><th>Selisih</th><th>Selisih Rp</th><th>Aksi</th></tr>';
 let tOH=0, tF=0, tRp=0;
 dataBarang.forEach((item,i)=>{
 tOH += item.oh; tF += item.fisik;
@@ -209,7 +205,7 @@ function simpanPS(){
 let pic = document.getElementById('inPIC').value;
 if(!pic){alert('Isi Nama PIC dulu!'); return;}
 if(dataBarang.length==0){alert('Load 17 Item dulu!'); return;}
-let tgl = new Date().toLocaleDateString('id-ID') + ' + new Date().toLocaleTimeString('id-ID');
+let tgl = new Date().toLocaleDateString('id-ID') + ' ' + new Date().toLocaleTimeString('id-ID');
 riwayatSO.unshift({tanggal:tgl, pic:pic, data:JSON.parse(JSON.stringify(dataBarang))});
 localStorage.setItem('soRiwayat', JSON.stringify(riwayatSO));
 showToast(`✅ Data Tersimpan ${tgl}`);
@@ -228,7 +224,7 @@ Tgl: ${r.tanggal}<br>PIC: <b>${r.pic}</b><br>Total Item: ${r.data.length}<br>
 document.getElementById('listRiwayat').innerHTML = html || '<p>Belum ada riwayat SO</p>';
 }
 function lihat(i){ dataBarang = JSON.parse(JSON.stringify(riwayatSO[i].data)); gantiMenu('input'); tampilkan(); showToast(`📄 Buka data ${riwayatSO[i].tanggal}`); }
-function hapusR(i){ if(confirm('Hapus riwayat ini?')){ riwayatSO.splice(i,1); localStorage.setItem('soRiwayat', JSON.stringify(riwayatSO)); tampilkanRiwayat(); }
+function hapusR(i){ if(confirm('Hapus riwayat ini?')){ riwayatSO.splice(i,1); localStorage.setItem('soRiwayat', JSON.stringify(riwayatSO)); tampilkanRiwayat(); } }
 function hapusSemuaRiwayat(){ if(confirm('Yakin hapus SEMUA riwayat?')){ riwayatSO=[]; localStorage.removeItem('soRiwayat'); tampilkanRiwayat(); showToast("✅ Riwayat Dihapus"); } }
 
 function exportCSV(){
