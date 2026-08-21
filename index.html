@@ -6,9 +6,7 @@
 <title>SO KE31 PEJOMPONGAN 3</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root {
---bg1:#ff9a9e; --bg2:#fecfef; --card:#ffffff; --text:#000; --header:#d63384; --border:#f8d7da; --btn:#ff6b9d;
-}
+:root {--bg1:#ff9a9e; --bg2:#fecfef; --card:#ffffff; --text:#000; --header:#d63384; --border:#f8d7da; --btn:#ff6b9d;}
 body.dark {--bg1:#4a1a2e; --bg2:#3e162e; --card:#2e0f30; --text:#fff; --border:#444;}
 *{font-family:'Poppins', sans-serif; box-sizing:border-box}
 body{background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%); display:flex; justify-content:center; align-items:center; min-height:100vh; margin:0; padding:15px; color:var(--text); transition:0.3s}
@@ -22,20 +20,17 @@ button:hover{opacity:0.85; transform:scale(1.02)}
 .btn-ungu{background:#a855f7}.btn-biru{background:#3b82f6}.btn-hijau{background:#10b981}
 .btn-abu{background:#6c757d}.btn-merah{background:#e74c3c}
 input{width:100%; padding:12px; margin:8px 0; border:2px solid var(--border); border-radius:10px; font-size:14px; background:var(--card); color:var(--text)}
-
-/* FIX TABEL BIAR GA KAKU DI HP */
 table{width:100%; margin-top:10px; border-collapse:collapse;}
 #tabelContainer{overflow-x:auto; -webkit-overflow-scrolling: touch;}
 th{background:var(--header); color:white; padding:8px; font-size:12px; white-space:nowrap; min-width:70px}
 td{padding:8px; border-bottom:1px solid var(--border); text-align:center; font-size:12px; white-space:nowrap; min-width:70px}
-td input{width:60px !important; padding:6px !important; margin:0 !important; font-size:13px !important; text-align:center; border:1px solid var(--border) !important; border-radius:8px}
-
+td input{width:60px!important; padding:6px!important; margin:0!important; font-size:13px!important; text-align:center; border:1px solid var(--border)!important; border-radius:8px}
 .minus{color:#e74c3c; font-weight:700}.plus{color:#10b981; font-weight:700}
 .modal{position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); display:none; justify-content:center; align-items:center; z-index:999}
 .modal-content{background:var(--card); color:var(--text); padding:20px; border-radius:15px; width:90%; max-width:400px}
 #toast{position:fixed; top:-60px; left:50%; transform:translateX(-50%); background:var(--btn); color:#fff; padding:12px 25px; border-radius:20px; transition: top 0.4s; z-index:9999; font-weight:600}
 #toast.show{top:20px}
-.riwayat-card{background:var(--border); padding:12px; border-radius:10px; margin:8px 0}
+.riwayat-card{background:var(--border); padding:12px; border-radius:10px; margin:8px 0; cursor:pointer}
 .page{display:none}.page.active{display:block}
 .warna-pilih{display:flex; gap:10px; justify-content:center; margin:10px 0}
 .warna-btn{width:40px; height:40px; border-radius:50%; border:3px solid white; cursor:pointer; box-shadow:0 2px 5px rgba(0,0,0,0.2)}
@@ -51,13 +46,11 @@ td input{width:60px !important; padding:6px !important; margin:0 !important; fon
 <p>Alfamart Ke31</p>
 <p><b>Created by Feilina 💖</b></p>
 
-<!-- MENU UTAMA / HOME -->
 <div id="menuUtama" class="page active">
 <button onclick="gantiMenu('input')">📝 Input SO</button>
 <button onclick="gantiMenu('riwayat')">📚 Riwayat SO</button>
 </div>
 
-<!-- PAGE INPUT SO -->
 <div id="pageInput" class="page">
 <button class="btn-abu" onclick="gantiMenu('home')">⬅️ Back ke Home</button>
 <input type="text" id="inPIC" placeholder="Nama PIC SO: contoh Feilina">
@@ -72,7 +65,6 @@ td input{width:60px !important; padding:6px !important; margin:0 !important; fon
 <div id="totalStok" style="margin-top:15px; font-weight:700; background:var(--header); color:white; padding:15px; border-radius:15px; text-align:center"></div>
 </div>
 
-<!-- PAGE RIWAYAT SO -->
 <div id="pageRiwayat" class="page">
 <button class="btn-abu" onclick="gantiMenu('home')">⬅️ Back ke Home</button>
 <h3>📚 Riwayat Stock Opname</h3>
@@ -80,27 +72,23 @@ td input{width:60px !important; padding:6px !important; margin:0 !important; fon
 <div id="listRiwayat"></div>
 </div>
 
-<!-- PAGE PENGATURAN -->
 <div id="pageSetting" class="page">
 <button class="btn-abu" onclick="gantiMenu('home')">⬅️ Back ke Home</button>
 <h3>⚙️ Pengaturan</h3>
 <button onclick="toggleDark()">🌙 Dark Mode On/Off</button>
 <h4 style="text-align:center; margin:15px 0 5px 0">🎨 Pilih Tema Warna:</h4>
 <div class="warna-pilih">
-<div class="warna-btn" style="background:#ff6b9d" onclick="gantiTema('pink')" title="Pink"></div>
-<div class="warna-btn" style="background:#a855f7" onclick="gantiTema('ungu')" title="Ungu"></div>
-<div class="warna-btn" style="background:#3b82f6" onclick="gantiTema('biru')" title="Biru"></div>
-<div class="warna-btn" style="background:#10b981" onclick="gantiTema('hijau')" title="Hijau"></div>
+<div class="warna-btn" style="background:#ff6b9d" onclick="gantiTema('pink')"></div>
+<div class="warna-btn" style="background:#a855f7" onclick="gantiTema('ungu')"></div>
+<div class="warna-btn" style="background:#3b82f6" onclick="gantiTema('biru')"></div>
+<div class="warna-btn" style="background:#10b981" onclick="gantiTema('hijau')"></div>
 </div>
 <button class="btn-ungu" onclick="ubahNamaToko()">🏪 Ubah Nama Toko</button>
-<button class="btn-hijau" onclick="exportCSV()">📤 Export Data Sekarang</button>
 <button class="btn-merah" onclick="resetData()">🔄 Reset Semua Data</button>
-<p style="font-size:12px; opacity:0.6; margin-top:20px">Versi: v5.4.2 FIX<br>Dibuat oleh Feilina 💖</p>
+<p style="font-size:12px; opacity:0.6; margin-top:20px">Versi: v5.4.3 FINAL<br>Dibuat oleh Feilina 💖</p>
+</div>
 </div>
 
-</div>
-
-<!-- MODAL TAMBAH MANUAL -->
 <div id="modalManual" class="modal">
 <div class="modal-content">
 <h3>➕ Tambah Produk Manual</h3>
@@ -121,7 +109,6 @@ let template17 = [
 {n:"Telor Asin"},{n:"Telur Ayam omega"},{n:"Telur Arab"},{n:"Telur Ayam negri Alfamart"},{n:"Telur Ayam kampung"},{n:"Le min 5L"},{n:"Le min 15L"},{n:"Alfa eco 30x40"},{n:"Alfa eco 38x45"}
 ];
 
-// LOAD TEMA DARI LOCALSTORAGE
 window.onload = function(){
   let tema = localStorage.getItem('temaSO') || 'pink';
   gantiTema(tema);
@@ -131,7 +118,7 @@ window.onload = function(){
 function toggleDark(){
   document.body.classList.toggle('dark');
   localStorage.setItem('darkSO', document.body.classList.contains('dark'));
-  showToast("✅ Tema Gelap/Terang Diganti");
+  showToast("✅ Tema Diganti");
 }
 
 function gantiTema(warna){
@@ -149,7 +136,7 @@ function ubahNamaToko(){
   if(nama){ document.getElementById('namaToko').innerText = nama; showToast("✅ Nama Toko Diubah"); }
 }
 function resetData(){
-  if(confirm('Yakin reset semua? Data SO dan Riwayat akan hilang!')){
+  if(confirm('Yakin reset semua?')){
     dataBarang=[]; riwayatSO=[]; localStorage.clear(); tampilkan(); tampilkanRiwayat(); showToast("✅ Data Direset");
   }
 }
@@ -169,8 +156,7 @@ if(confirm('Load 17 Item Template?')){
 dataBarang = [];
 template17.forEach(t => dataBarang.push({nama:t.n, oh:0, fisik:0, harga:0}));
 tampilkan(); showToast("✅ 17 Item Dimuat");
-}
-}
+}}
 function simpanManual(){
 let n = document.getElementById('inNama').value;
 let oh = document.getElementById('inOH').value;
@@ -210,20 +196,19 @@ function simpanPS(){
 let pic = document.getElementById('inPIC').value;
 if(!pic){alert('Isi Nama PIC dulu!'); return;}
 if(dataBarang.length==0){alert('Load 17 Item dulu!'); return;}
-let tgl = new Date().toLocaleDateString('id-ID') + ' + new Date().toLocaleTimeString('id-ID');
+let tgl = new Date().toLocaleDateString('id-ID') + ' + new Date().toLocaleTimeString('id-ID'); // FIX TYPO
 riwayatSO.unshift({tanggal:tgl, pic:pic, data:JSON.parse(JSON.stringify(dataBarang))});
 localStorage.setItem('soRiwayat', JSON.stringify(riwayatSO));
 showToast(`✅ Data Tersimpan ${tgl}`);
+gantiMenu('home');
 }
 
 function tampilkanRiwayat(){
 let html = '';
 riwayatSO.forEach((r,i)=>{
-html += `<div class="riwayat-card">
-<b>${document.getElementById('namaToko').innerText}</b><br>
-Tgl: ${r.tanggal}<br>PIC: <b>${r.pic}</b><br>Total Item: ${r.data.length}<br>
-<button onclick="lihat(${i})">👁️ Lihat Detail</button>
-<button class="btn-merah" onclick="hapusR(${i})">🗑️ Hapus</button>
+html += `<div class="riwayat-card" onclick="lihat(${i})">
+<b>${r.tanggal}</b><br>PIC: <b>${r.pic}</b><br>Total Item: ${r.data.length}<br>
+<button class="btn-merah" onclick="event.stopPropagation(); hapusR(${i})">🗑️ Hapus</button>
 </div>`;
 });
 document.getElementById('listRiwayat').innerHTML = html || '<p>Belum ada riwayat SO</p>';
@@ -254,7 +239,7 @@ if(!ada) pesan += "Alhamdulillah Tidak ada minus 🙏\n\n*Semua stok aman*";
 window.open(`https://wa.me/?text=${encodeURIComponent(pesan)}`);
 }
 
-function showToast(p){ const t=document.getElementById('tabelContainer'); t.innerText=p; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2500); }
+function showToast(p){ const t=document.getElementById('toast'); t.innerText=p; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2500); } // FIX
 </script>
 </body>
 </html>
