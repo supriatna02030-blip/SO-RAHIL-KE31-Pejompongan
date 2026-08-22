@@ -94,12 +94,12 @@ td{padding:8px; border-bottom:1px solid var(--border); text-align:center; font-s
 <button class="btn-ungu" onclick="ubahNamaToko()">🏪 Ubah Nama Toko</button>
 <button class="btn-hijau" onclick="exportCSV()">📤 Export Data Sekarang</button>
 <button class="btn-merah" onclick="resetData()">🔄 Reset Semua Data</button>
-<p style="font-size:12px; opacity:0.6; margin-top:20px">Versi: v5.5 EDIT<br>Dibuat oleh Feilina 💖</p>
+<p style="font-size:12px; opacity:0.6; margin-top:20px">Versi: v5.6 FINAL<br>Dibuat oleh Feilina 💖</p>
 </div>
 
 </div>
 
-<!-- MODAL TAMBAH MANUAL VERSI BARU - UDAH GA KAKU -->
+<!-- MODAL TAMBAH MANUAL VERSI BARU -->
 <div id="modalManual" class="modal">
 <div class="modal-content">
 <h3>➕ Tambah Produk Manual</h3>
@@ -190,7 +190,6 @@ function bukaModal(){
   document.getElementById('inFisik').value = '';
   document.getElementById('inHarga').value = '';
   
-  // Enter untuk simpan, ESC untuk batal
   document.getElementById('modalManual').addEventListener('keydown', function(e){
     if(e.key === 'Enter'){ simpanManual(); }
     if(e.key === 'Escape'){ tutupModal(); }
@@ -245,7 +244,7 @@ function simpanPS(){
 let pic = document.getElementById('inPIC').value;
 if(!pic){alert('Isi Nama PIC dulu!'); return;}
 if(dataBarang.length==0){alert('Load 17 Item dulu!'); return;}
-let tgl = new Date().toLocaleDateString('id-ID') + ' + new Date().toLocaleTimeString('id-ID');
+let tgl = new Date().toLocaleDateString('id-ID') + ' ' + new Date().toLocaleTimeString('id-ID'); // UDAH DIFIX
 riwayatSO.unshift({tanggal:tgl, pic:pic, data:JSON.parse(JSON.stringify(dataBarang))});
 localStorage.setItem('soRiwayat', JSON.stringify(riwayatSO));
 showToast(`✅ Data Tersimpan ${tgl}`);
