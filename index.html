@@ -23,10 +23,10 @@ button:hover{opacity:0.85; transform:scale(1.02)}
 .btn-abu{background:#6c757d}.btn-merah{background:#e74c3c}
 input{width:100%; padding:10px; margin:0; border:2px solid var(--border); border-radius:8px; font-size:14px; background:var(--card); color:var(--text); text-align:center}
 input:focus{border-color:var(--btn); outline:none; box-shadow:0 0 0 2px rgba(255,107,157,0.2)}
-.input-so{width:70px!important; min-width:70px!important}
 table{width:100%; margin-top:10px; border-collapse:collapse; overflow-x:auto; display:block}
 th{background:var(--header); color:white; padding:8px; font-size:12px; white-space:nowrap}
 td{padding:6px; border-bottom:1px solid var(--border); text-align:center; font-size:12px; white-space:nowrap}
+td input{width:70px} /* INI KUNCINYA BIAR OH FISIK KECIL */
 .minus{color:#e74c3c; font-weight:700}.plus{color:#10b981; font-weight:700}
 .modal{position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); display:none; justify-content:center; align-items:center; z-index:999}
 .modal-content{background:var(--card); color:var(--text); padding:25px; border-radius:15px; width:90%; max-width:400px}
@@ -91,7 +91,7 @@ td{padding:6px; border-bottom:1px solid var(--border); text-align:center; font-s
 <button class="btn-ungu" onclick="ubahNamaToko()">🏪 Ubah Nama Toko</button>
 <button class="btn-hijau" onclick="exportCSV()">📤 Export Data Sekarang</button>
 <button class="btn-merah" onclick="resetData()">🔄 Reset Semua Data</button>
-<p style="font-size:12px; opacity:0.6; margin-top:20px">Versi: v6.5 FINAL<br>Dibuat oleh Feilina 💖</p>
+<p style="font-size:12px; opacity:0.6; margin-top:20px">Versi: v6.6 POLOS<br>Dibuat oleh Feilina 💖</p>
 </div>
 </div>
 
@@ -103,7 +103,7 @@ td{padding:6px; border-bottom:1px solid var(--border); text-align:center; font-s
 <div class="form-group" style="flex:1"><label>Stok OH</label><input type="number" id="inOH" placeholder="0"></div>
 <div class="form-group" style="flex:1"><label>Stok Fisik</label><input type="number" id="inFisik" placeholder="0"></div>
 </div>
-<div class="form-group"><label> Harga Satuan</label><input type="number" id="inHarga" placeholder="Contoh: 3500"></div>
+<div class="form-group"><label>Harga Satuan</label><input type="number" id="inHarga" placeholder="Contoh: 3500"></div>
 <div style="display:flex; gap:10px; margin-top:20px">
 <button onclick="simpanManual()" style="flex:1">✅ Simpan</button>
 <button class="btn-merah" onclick="tutupModal()" style="flex:1">❌ Batal</button>
@@ -151,8 +151,8 @@ let s = item.fisik - item.oh;
 let sRp = s * (item.harga || 0);
 let c = s>0?'plus':s<0?'minus':'';
 html += '<tr><td>'+(i+1)+'</td><td style="text-align:left">'+item.nama+'</td>'+
-'<td><input type="number" class="input-so" value="'+item.oh+'" onchange="updateField('+i+',\'oh\',this.value)"></td>'+
-'<td><input type="number" class="input-so" value="'+item.fisik+'" onchange="updateField('+i+',\'fisik\',this.value)"></td>'+
+'<td><input type="number" value="'+item.oh+'" onchange="updateField('+i+',\'oh\',this.value)"></td>'+
+'<td><input type="number" value="'+item.fisik+'" onchange="updateField('+i+',\'fisik\',this.value)"></td>'+
 '<td><input type="number" value="'+item.harga+'" onchange="updateField('+i+',\'harga\',this.value)"></td>'+
 '<td class="'+c+'">'+s+'</td>'+
 '<td class="'+c+'">Rp '+sRp.toLocaleString('id-ID')+'</td>'+
