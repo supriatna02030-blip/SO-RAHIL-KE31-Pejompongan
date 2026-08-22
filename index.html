@@ -21,17 +21,14 @@ button{width:100%; padding:12px; margin:8px 0; border:none; border-radius:10px; 
 button:hover{opacity:0.85; transform:scale(1.02)}
 .btn-ungu{background:#a855f7}.btn-biru{background:#3b82f6}.btn-hijau{background:#10b981}
 .btn-abu{background:#6c757d}.btn-merah{background:#e74c3c}
-input{width:100%; padding:12px; margin:8px 0; border:2px solid var(--border); border-radius:10px; font-size:14px; background:var(--card); color:var(--text)}
+input{width:100%; padding:10px; margin:0; border:2px solid var(--border); border-radius:8px; font-size:14px; background:var(--card); color:var(--text); text-align:center} /* UDAH DIFIX */
+input:focus{border-color:var(--btn); outline:none; box-shadow:0 0 0 2px rgba(255,107,157,0.2)}
 table{width:100%; margin-top:10px; border-collapse:collapse; overflow-x:auto; display:block}
 th{background:var(--header); color:white; padding:8px; font-size:12px; white-space:nowrap}
-td{padding:8px; border-bottom:1px solid var(--border); text-align:center; font-size:12px; white-space:nowrap}
+td{padding:6px; border-bottom:1px solid var(--border); text-align:center; font-size:12px; white-space:nowrap}
 .minus{color:#e74c3c; font-weight:700}.plus{color:#10b981; font-weight:700}
 .modal{position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); display:none; justify-content:center; align-items:center; z-index:999}
 .modal-content{background:var(--card); color:var(--text); padding:25px; border-radius:15px; width:90%; max-width:400px}
-.modal-content h3{margin-top:0; color:var(--header)}
-.form-group{margin-bottom:15px; text-align:left}
-.form-group label{display:block; font-size:13px; font-weight:600; margin-bottom:5px; color:var(--header)}
-.modal-content input:focus{border-color:var(--btn); outline:none; box-shadow:0 0 0 3px rgba(255,107,157,0.2)}
 #toast{position:fixed; top:-60px; left:50%; transform:translateX(-50%); background:var(--btn); color:#fff; padding:12px 25px; border-radius:20px; transition: top 0.4s; z-index:9999; font-weight:600}
 #toast.show{top:20px}
 .riwayat-card{background:var(--border); padding:12px; border-radius:10px; margin:8px 0}
@@ -83,15 +80,15 @@ td{padding:8px; border-bottom:1px solid var(--border); text-align:center; font-s
 <button onclick="toggleDark()">🌙 Dark Mode On/Off</button>
 <h4 style="text-align:center; margin:15px 0 5px 0">🎨 Pilih Tema Warna:</h4>
 <div class="warna-pilih">
-<div class="warna-btn" style="background:#ff6b9d" onclick="gantiTema('pink')" title="Pink"></div>
-<div class="warna-btn" style="background:#a855f7" onclick="gantiTema('ungu')" title="Ungu"></div>
-<div class="warna-btn" style="background:#3b82f6" onclick="gantiTema('biru')" title="Biru"></div>
-<div class="warna-btn" style="background:#10b981" onclick="gantiTema('hijau')" title="Hijau"></div>
+<div class="warna-btn" style="background:#ff6b9d" onclick="gantiTema('pink')"></div>
+<div class="warna-btn" style="background:#a855f7" onclick="gantiTema('ungu')"></div>
+<div class="warna-btn" style="background:#3b82f6" onclick="gantiTema('biru')"></div>
+<div class="warna-btn" style="background:#10b981" onclick="gantiTema('hijau')"></div>
 </div>
 <button class="btn-ungu" onclick="ubahNamaToko()">🏪 Ubah Nama Toko</button>
 <button class="btn-hijau" onclick="exportCSV()">📤 Export Data Sekarang</button>
 <button class="btn-merah" onclick="resetData()">🔄 Reset Semua Data</button>
-<p style="font-size:12px; opacity:0.6; margin-top:20px">Versi: v5.8 ANTI KICK<br>Dibuat oleh Feilina 💖</p>
+<p style="font-size:12px; opacity:0.6; margin-top:20px">Versi: v5.9 FIX INPUT<br>Dibuat oleh Feilina 💖</p>
 </div>
 </div>
 
@@ -126,14 +123,7 @@ window.onload = function(){
 }
 
 function toggleDark(){ document.body.classList.toggle('dark'); localStorage.setItem('darkSO', document.body.classList.contains('dark')); showToast("✅ Tema Diganti"); }
-function gantiTema(warna){
-  let r = document.documentElement.style;
-  if(warna=='pink'){ r.setProperty('--bg1','#ff9a9e'); r.setProperty('--bg2','#fecfef'); r.setProperty('--header','#d63384'); r.setProperty('--btn','#ff6b9d'); }
-  if(warna=='ungu'){ r.setProperty('--bg1','#c084fc'); r.setProperty('--bg2','#e9d5ff'); r.setProperty('--header','#9333ea'); r.setProperty('--btn','#a855f7'); }
-  if(warna=='biru'){ r.setProperty('--bg1','#93c5fd'); r.setProperty('--bg2','#dbeafe'); r.setProperty('--header','#2563eb'); r.setProperty('--btn','#3b82f6'); }
-  if(warna=='hijau'){ r.setProperty('--bg1','#6ee7b7'); r.setProperty('--bg2','#d1fae5'); r.setProperty('--header','#059669'); r.setProperty('--btn','#10b981'); }
-  localStorage.setItem('temaSO', warna); showToast(`✅ Tema ${warna} Aktif`);
-}
+function gantiTema(warna){ let r = document.documentElement.style; if(warna=='pink'){ r.setProperty('--bg1','#ff9a9e'); r.setProperty('--bg2','#fecfef'); r.setProperty('--header','#d63384'); r.setProperty('--btn','#ff6b9d'); } if(warna=='ungu'){ r.setProperty('--bg1','#c084fc'); r.setProperty('--bg2','#e9d5ff'); r.setProperty('--header','#9333ea'); r.setProperty('--btn','#a855f7'); } if(warna=='biru'){ r.setProperty('--bg1','#93c5fd'); r.setProperty('--bg2','#dbeafe'); r.setProperty('--header','#2563eb'); r.setProperty('--btn','#3b82f6'); } if(warna=='hijau'){ r.setProperty('--bg1','#6ee7b7'); r.setProperty('--bg2','#d1fae5'); r.setProperty('--header','#059669'); r.setProperty('--btn','#10b981'); } localStorage.setItem('temaSO', warna); showToast(`✅ Tema ${warna} Aktif`); }
 function ubahNamaToko(){ let nama = prompt("Nama Toko Baru:", document.getElementById('namaToko').innerText); if(nama){ document.getElementById('namaToko').innerText = nama; showToast("✅ Nama Diubah"); } }
 function resetData(){ if(confirm('Yakin reset semua?')){ dataBarang=[]; riwayatSO=[]; localStorage.clear(); tampilkan(); tampilkanRiwayat(); showToast("✅ Direset"); } }
 function gantiMenu(m){ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active')); if(m=='home') document.getElementById('menuUtama').classList.add('active'); if(m=='input') document.getElementById('pageInput').classList.add('active'); if(m=='riwayat'){ document.getElementById('pageRiwayat').classList.add('active'); tampilkanRiwayat(); } if(m=='setting') document.getElementById('pageSetting').classList.add('active'); }
@@ -142,14 +132,13 @@ function tutupModal(){document.getElementById('modalManual').style.display='none
 function loadItems(){ if(confirm('Load 17 Item Template?')){ dataBarang = []; template17.forEach(t => dataBarang.push({nama:t.n, oh:0, fisik:0, harga:0})); tampilkan(); showToast("✅ 17 Item Dimuat"); } }
 function simpanManual(){ let n = document.getElementById('inNama').value.trim(); let oh = document.getElementById('inOH').value; let f = document.getElementById('inFisik').value; let h = document.getElementById('inHarga').value; if(!n){alert('Isi Nama Barang!'); return;} dataBarang.push({nama:n, oh:Number(oh)||0, fisik:Number(f)||0, harga:Number(h)||0}); tutupModal(); tampilkan(); showToast("✅ Produk Ditambah"); }
 
-// KUNCI UTAMANYA DISINI: GA ADA UPDATE PAS KETIK
-function updateField(i, f, v){ dataBarang[i][f] = Number(v)||0; } // Cuma simpan ke data, ga render
+function updateField(i, f, v){ dataBarang[i][f] = Number(v)||0; } // Cuma simpan data
 
 function hitungTotal(){
   let tOH=0, tF=0, tRp=0;
   dataBarang.forEach((item)=>{ tOH += item.oh; tF += item.fisik; let s = item.fisik - item.oh; tRp += s * (item.harga || 0); });
   document.getElementById('totalStok').innerHTML = `Total Item: ${dataBarang.length} | Total OH: ${tOH} | Total Fisik: ${tF} | Total Selisih Rp: Rp ${tRp.toLocaleString('id-ID')}`;
-  tampilkan(); // Baru render ulang pas klik tombol
+  tampilkan(); // Baru render ulang
 }
 
 function tampilkan(){
@@ -159,8 +148,8 @@ let s = item.fisik - item.oh;
 let sRp = s * (item.harga || 0);
 let c = s>0?'plus':s<0?'minus':'';
 html += `<tr><td>${i+1}</td><td style="text-align:left">${item.nama}</td>
-<td><input type="number" value="${item.oh}" onchange="updateField(${i},'oh',this.value)"></td>
-<td><input type="number" value="${item.fisik}" onchange="updateField(${i},'fisik',this.value)"></td>
+<td><input type="number" value="${item.oh}" onchange="updateField(${i},'oh',this.value)"></td>  // UDAH BISA KLIK
+<td><input type="number" value="${item.fisik}" onchange="updateField(${i},'fisik',this.value)"></td> // UDAH BISA KLIK
 <td><input type="number" value="${item.harga}" onchange="updateField(${i},'harga',this.value)"></td>
 <td class="${c}">${s}</td>
 <td class="${c}">Rp ${sRp.toLocaleString('id-ID')}</td>
