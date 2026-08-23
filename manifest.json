@@ -1,16 +1,20 @@
 {
-  "background_color": "#ffffff",
+  "name": "SO KE31 PEJOMPONGAN 3",
+  "short_name": "SO KE31",
+  "description": "Aplikasi Stock Opname SO KE31 Pejompongan 3",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
-  "name": "RAHIL",
-  "short_name": "RAWAN HILANG",
-  "start_url": "/",
+  "orientation": "portrait",
+  "background_color": "#fecfef",
   "theme_color": "#2563EB",
-  "description": "APLIKASI STOCK OPNAME RAWAN HILANG BISA TAMBAH ITEM/HAPUS ITEM SIMPLE DAN AKURAT",
+  "lang": "id-ID",
   "icons": [
     {
-      "src": "icon-512.1.png",
+      "src": "./icons/icon-512.1.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
