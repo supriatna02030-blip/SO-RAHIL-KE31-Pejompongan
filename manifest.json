@@ -1,0 +1,16 @@
+{
+  "name": "SO RAHIL Stock Opname",
+  "short_name": "SO RAHIL SO",
+  "description": "Aplikasi Stock Opname SO RAHIL untuk pencatatan barang masuk, keluar, dan stok gudang",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#2563EB",
+  "icons": [
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
